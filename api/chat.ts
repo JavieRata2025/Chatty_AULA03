@@ -36,15 +36,14 @@ export default async function handler(req: any, res: any) {
     }
     contents.push({ role: 'user', parts: [{ text: message }] });
 
-    const config: any = {
-      systemInstruction: SYSTEM_PROMPT,
-      thinkingConfig: { thinkingLevel: 'LOW' },
-      tools: [{ googleSearch: {} }],
-    };
-
+    // Cambiamos a gemini-1.5-flash y simplificamos la config.
+    // El modelo 3.1-flash-lite con 'thinkingLevel' y 'googleSearch' a veces 
+    // consume cuota más rápido o requiere planes específicos/activación de facturación.
     const response = await ai.models.generateContent({
-      model: 'gemini-3.1-flash-lite-preview',
-      config,
+      model: 'gemini-1.5-flash',
+      config: {
+        systemInstruction: SYSTEM_PROMPT,
+      },
       contents,
     });
 
