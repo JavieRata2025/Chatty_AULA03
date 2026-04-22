@@ -36,11 +36,9 @@ export default async function handler(req: any, res: any) {
     }
     contents.push({ role: 'user', parts: [{ text: message }] });
 
-    // Cambiamos a gemini-1.5-flash y simplificamos la config.
-    // El modelo 3.1-flash-lite con 'thinkingLevel' y 'googleSearch' a veces 
-    // consume cuota más rápido o requiere planes específicos/activación de facturación.
+    // Cambiamos a gemini-2.0-flash para mayor compatibilidad con la versión v1beta de la API.
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-2.0-flash',
       config: {
         systemInstruction: SYSTEM_PROMPT,
       },
