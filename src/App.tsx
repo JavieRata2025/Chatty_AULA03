@@ -67,7 +67,8 @@ export default function App() {
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        const errData = await response.json();
+        throw new Error(errData.error || 'Network response was not ok');
       }
 
       const data = await response.json();
@@ -89,7 +90,7 @@ export default function App() {
         {
           id: Date.now().toString(),
           sender: 'bot',
-          text: "¡Ay! 🌪️ Una tormenta de polvo en mis recuerdos me impide escucharte bien. ¿Puedes repetirme lo que dijiste, Maestro?",
+          text: `¡Ay! 🌪️ Parece que hay una avería: **${error.message}**`,
         },
       ]);
     } finally {
