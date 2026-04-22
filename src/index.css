@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-fondo: #f9f6f0;
+  --color-primario: #bc6c25;
+  --color-secundario: #dda15e;
+  --color-texto: #283618;
+  --color-borde: #e6ccb2;
+
+  --font-body: 'Quicksand', 'Helvetica Neue', Arial, sans-serif;
+  --font-titulo: 'Georgia', serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+/* Scrollbar temático */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-fondo); }
+::-webkit-scrollbar-thumb {
+    background: var(--color-secundario);
+    border-radius: 10px;
+}
+
+/* Animaciones */
+.dot-typing { animation: blink 1.4s infinite both; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-400 { animation-delay: 0.4s; }
+
+@keyframes blink {
+    0% { opacity: .2; transform: translateY(0); }
+    20% { opacity: 1; transform: translateY(-2px); }
+    100% { opacity: .2; transform: translateY(0); }
+}
+
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fade-in-up 0.4s ease-out forwards; }
